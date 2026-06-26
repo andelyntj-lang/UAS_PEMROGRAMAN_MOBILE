@@ -37,7 +37,7 @@ public class MainActivity4 extends AppCompatActivity {
 
         // Inisialisasi Firebase Database
         mDatabase = FirebaseDatabase.getInstance().getReference();
-        
+
         userPrefs = getSharedPreferences("UserPrefs", MODE_PRIVATE);
         initViews();
         loadCurrentData();
@@ -66,7 +66,7 @@ public class MainActivity4 extends AppCompatActivity {
         etEditUsia.setText(userPrefs.getString("user_age", ""));
         etEditTinggi.setText(userPrefs.getString("user_height", ""));
         etEditBerat.setText(userPrefs.getString("user_weight", ""));
-        
+
         String gender = userPrefs.getString("user_gender", "");
         if ("Laki-laki".equals(gender)) {
             rbEditLaki.setChecked(true);
@@ -138,18 +138,18 @@ public class MainActivity4 extends AppCompatActivity {
         userUpdate.put("targetAir", baseTarget);
 
         mDatabase.child("users").child(userId).updateChildren(userUpdate)
-            .addOnSuccessListener(aVoid -> {
-                Toast.makeText(MainActivity4.this, "Data Berhasil Disinkronkan ke Cloud!", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(MainActivity4.this, MainActivity8.class);
-                startActivity(intent);
-                finish();
-            })
-            .addOnFailureListener(e -> {
-                Toast.makeText(MainActivity4.this, "Gagal Sinkron: " + e.getMessage(), Toast.LENGTH_SHORT).show();
-                // Tetap lanjut ke dashboard meski firebase gagal (opsional)
-                startActivity(new Intent(MainActivity4.this, MainActivity8.class));
-                finish();
-            });
+                .addOnSuccessListener(aVoid -> {
+                    Toast.makeText(MainActivity4.this, "Data Berhasil Disinkronkan ke Cloud!", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(MainActivity4.this, MainActivity8.class);
+                    startActivity(intent);
+                    finish();
+                })
+                .addOnFailureListener(e -> {
+                    Toast.makeText(MainActivity4.this, "Gagal Sinkron: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                    // Tetap lanjut ke dashboard meski firebase gagal (opsional)
+                    startActivity(new Intent(MainActivity4.this, MainActivity8.class));
+                    finish();
+                });
 
         // Update target harian lokal
         SharedPreferences dailyPrefs = getSharedPreferences("DailyActivityLogs", MODE_PRIVATE);

@@ -20,7 +20,7 @@ public class ReminderReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         String action = intent != null ? intent.getAction() : null;
-        
+
         if (Intent.ACTION_BOOT_COMPLETED.equals(action)) {
             scheduleDailyReminder(context);
         } else {
@@ -46,11 +46,11 @@ public class ReminderReceiver extends BroadcastReceiver {
 
         Intent notificationIntent = new Intent(context, MainActivity.class);
         notificationIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        
+
         PendingIntent pendingIntent = PendingIntent.getActivity(
-                context, 
-                0, 
-                notificationIntent, 
+                context,
+                0,
+                notificationIntent,
                 PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE
         );
 
@@ -75,9 +75,9 @@ public class ReminderReceiver extends BroadcastReceiver {
 
             Intent intent = new Intent(context, ReminderReceiver.class);
             PendingIntent pendingIntent = PendingIntent.getBroadcast(
-                    context, 
-                    100, 
-                    intent, 
+                    context,
+                    100,
+                    intent,
                     PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE
             );
 
