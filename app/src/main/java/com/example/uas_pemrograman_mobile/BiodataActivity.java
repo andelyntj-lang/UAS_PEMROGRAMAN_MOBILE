@@ -39,7 +39,7 @@ public class BiodataActivity extends AppCompatActivity {
             if (validateInputs()) {
                 saveBiodata();
                 Toast.makeText(this, "Biodata Berhasil Disimpan!", Toast.LENGTH_SHORT).show();
-                
+
                 // Pindah ke MainActivity8 (Beranda) - Sesuai instruksi sebelumnya untuk masuk ke Beranda
                 Intent intent = new Intent(BiodataActivity.this, MainActivity8.class);
                 startActivity(intent);
@@ -92,7 +92,7 @@ public class BiodataActivity extends AppCompatActivity {
         String tinggi = etTinggi.getText().toString();
         String beratStr = etBerat.getText().toString();
         String aktivitas = etAktivitas.getText().toString();
-        
+
         int selectedGenderId = rgGender.getCheckedRadioButtonId();
         RadioButton rbSelected = findViewById(selectedGenderId);
         String gender = rbSelected.getText().toString();
