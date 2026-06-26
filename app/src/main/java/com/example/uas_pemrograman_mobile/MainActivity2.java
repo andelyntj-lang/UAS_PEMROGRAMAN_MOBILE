@@ -81,25 +81,25 @@ public class MainActivity2 extends AppCompatActivity {
         btnRegister.setEnabled(false);
 
         mDatabase.child("users").child(userId).setValue(user)
-            .addOnSuccessListener(aVoid -> {
-                // Berhasil kirim ke Firebase, lalu simpan ke lokal
-                SharedPreferences prefs = getSharedPreferences("UserPrefs", MODE_PRIVATE);
-                SharedPreferences.Editor editor = prefs.edit();
-                editor.putString("user_email", email);
-                editor.putBoolean("is_logged_in", true);
-                editor.apply();
+                .addOnSuccessListener(aVoid -> {
+                    // Berhasil kirim ke Firebase, lalu simpan ke lokal
+                    SharedPreferences prefs = getSharedPreferences("UserPrefs", MODE_PRIVATE);
+                    SharedPreferences.Editor editor = prefs.edit();
+                    editor.putString("user_email", email);
+                    editor.putBoolean("is_logged_in", true);
+                    editor.apply();
 
-                ReminderReceiver.scheduleDailyReminder(this);
-                Toast.makeText(this, "Berhasil Daftar di Firebase!", Toast.LENGTH_SHORT).show();
+                    ReminderReceiver.scheduleDailyReminder(this);
+                    Toast.makeText(this, "Berhasil Daftar di Firebase!", Toast.LENGTH_SHORT).show();
 
-                Intent intent = new Intent(MainActivity2.this, MainActivity4.class);
-                startActivity(intent);
-                finish();
-            })
-            .addOnFailureListener(e -> {
-                btnRegister.setEnabled(true);
-                Toast.makeText(this, "Koneksi Gagal: " + e.getMessage(), Toast.LENGTH_LONG).show();
-            });
+                    Intent intent = new Intent(MainActivity2.this, MainActivity4.class);
+                    startActivity(intent);
+                    finish();
+                })
+                .addOnFailureListener(e -> {
+                    btnRegister.setEnabled(true);
+                    Toast.makeText(this, "Koneksi Gagal: " + e.getMessage(), Toast.LENGTH_LONG).show();
+                });
     }
 
     private boolean validateForm() {
