@@ -102,7 +102,7 @@ public class MainActivity5 extends AppCompatActivity {
         tvSummaryDate.setText(getString(R.string.data_for_label, selectedDateKey));
         tvSummaryWater.setText(getString(R.string.total_drink_label, savedWater));
         tvSummaryActivity.setText(getString(R.string.activity_label, savedActivity));
-        
+
         cvDailySummary.setVisibility(View.VISIBLE);
     }
 }
