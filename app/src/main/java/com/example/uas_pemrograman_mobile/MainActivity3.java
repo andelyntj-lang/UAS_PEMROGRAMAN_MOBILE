@@ -110,7 +110,7 @@ public class MainActivity3 extends AppCompatActivity {
 
         // HANYA tombol + yang berfungsi untuk ganti foto
         btnAddPhoto.setOnClickListener(v -> showImageSourceDialog());
-        
+
         // Fitur klik foto profil untuk melihat gambar full (seperti WA)
         ivProfilePic.setOnClickListener(v -> showFullImageDialog());
     }
@@ -157,7 +157,7 @@ public class MainActivity3 extends AppCompatActivity {
         ivFullImage.setImageBitmap(myBitmap);
 
         btnClose.setOnClickListener(v -> dialog.dismiss());
-        
+
         dialog.show();
     }
 
@@ -217,7 +217,7 @@ public class MainActivity3 extends AppCompatActivity {
         try {
             InputStream inputStream = getContentResolver().openInputStream(imageUri);
             Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
-            
+
             if (bitmap != null) {
                 // Simpan bitmap ke internal storage agar persisten
                 File profilePicFile = new File(getFilesDir(), "profile_pic.jpg");
