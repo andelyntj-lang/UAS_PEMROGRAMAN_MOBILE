@@ -97,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
                         SharedPreferences.Editor editor = prefs.edit();
                         editor.putString("user_email", email);
                         editor.putBoolean("is_logged_in", true);
-                        
+
                         // Cek apakah biodata sudah pernah diisi sebelumnya di Firebase
                         boolean biodataFilled = snapshot.hasChild("tinggi") || snapshot.hasChild("usia");
                         editor.putBoolean("is_biodata_filled", biodataFilled);
@@ -125,7 +125,7 @@ public class MainActivity extends AppCompatActivity {
     private void lanjutKeBeranda() {
         WaterReminderHelper.scheduleWaterReminder(this);
         ReminderReceiver.scheduleDailyReminder(this);
-        
+
         SharedPreferences prefs = getSharedPreferences("UserPrefs", MODE_PRIVATE);
         if (prefs.getBoolean("is_biodata_filled", false)) {
             startActivity(new Intent(MainActivity.this, MainActivity8.class));
